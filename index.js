@@ -10,22 +10,21 @@ var express         = require('express'),
     flash           = require('connect-flash'),
     passport        = require('passport'),
     methodOverride  = require('method-override'),
-    LocalStrategy   = require('passport-local'),
-    Campground      = require('./models/campground'),
-    Comment         = require('./models/comment'),
-    User            = require('./models/user');
+    LocalStrategy   = require('passport-local');
+    // Campground      = require('./models/campground'),
+    // Comment         = require('./models/comment'),
+    // User            = require('./models/user');
 
 // import route handlers
-var indexRoutes         = require('./routes/index'),
-    campgroundRoutes    = require('./routes/campgrounds'),
-    commentRoutes       = require('./routes/comments');
+// var indexRoutes         = require('./routes/index'),
+//     campgroundRoutes    = require('./routes/campgrounds'),
+//     commentRoutes       = require('./routes/comments');
 
 // environment config
 var ip              = process.env.IP || '127.0.0.1',
     port            = parseInt(process.env.PORT, 10) || 8080,
     dbURL           = process.env.DBURL || 'mongodb://localhost/theia',
     passportSecret  = process.env.SECRET || "Some random long string you'd never put in version control.";
-
 
 mongoose.connect(dbURL, {useMongoClient: true});
 
