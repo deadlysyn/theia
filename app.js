@@ -22,7 +22,7 @@ var express         = require('express'),
 
 // environment config
 var ip              = process.env.IP || '127.0.0.1',
-    port            = parseInt(process.env.PORT, 10) || 8080,
+    port            = parseInt(process.env.PORT, 10) || 3000,
     dbURL           = process.env.DBURL || 'mongodb://localhost/theia',
     passportSecret  = process.env.SECRET || "Some random long string you'd never put in version control.";
 
