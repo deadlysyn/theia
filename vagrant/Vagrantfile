@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # https://docs.vagrantup.com.
 
   config.vm.define "ubuntu" do |ubuntu|
-    config.vm.box = "ubuntu/xenial64"
+    ubuntu.vm.box = "ubuntu/xenial64"
     #config.vm.network "forwarded_port", guest: 80, host: 8080
 
     # Create a private network, which allows host-only access to the machine
@@ -18,10 +18,10 @@ Vagrant.configure("2") do |config|
     # the path on the host to the actual folder. The second argument is
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
-    config.vm.synced_folder "..", "/src"
+    ubuntu.vm.synced_folder "..", "/src"
 
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
+    ubuntu.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
     end
 
     # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
@@ -41,11 +41,11 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "centos" do |centos|
-    config.vm.box = "centos/7"
-    #config.vm.network "forwarded_port", guest: 80, host: 8080
-    config.vm.synced_folder "..", "/src"
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
+    centos.vm.box = "centos/7"
+    #centos.vm.network "forwarded_port", guest: 80, host: 8080
+    centos.vm.synced_folder "..", "/src"
+    centos.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
     end
   end
 end
