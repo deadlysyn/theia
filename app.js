@@ -10,15 +10,15 @@ var express         = require('express'),
     flash           = require('connect-flash'),
     passport        = require('passport'),
     methodOverride  = require('method-override'),
-    LocalStrategy   = require('passport-local');
-    // Campground      = require('./models/campground'),
-    // Comment         = require('./models/comment'),
-    // User            = require('./models/user');
+    LocalStrategy   = require('passport-local'),
+    User            = require('./models/user');
+    // Host = require('./models/host'),
+    // Package = require('./models/package');
 
 // import route handlers
-var indexRoutes         = require('./routes/index'),
-    apiRoutes           = require('./routes/campgrounds'),
-    adminRoutes         = require('./routes/comments');
+var indexRoutes         = require('./routes/index');
+    // apiRoutes           = require('./routes/api'),
+    // adminRoutes         = require('./routes/admin');
 
 // environment config
 var ip              = process.env.IP || '127.0.0.1',
@@ -47,9 +47,9 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // make objects available in all views/templates
 app.use(function(req, res, next) {
@@ -59,15 +59,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-// app.use('/', indexRoutes);
-// app.use('/campgrounds', campgroundRoutes);
-// app.use('/campgrounds/:id/comments', commentRoutes);
-
-app.get('/', function(req, res) {
-    var time = new Date();
-    console.log(time.toString() + ' - GET /');
-    res.send('hello world');
-});
+app.use('/', indexRoutes);
+// app.use('/api', apiRoutes);
+// app.use('/admin', adminRoutes);
 
 app.listen(port, ip, function() {
     console.log('Server listening on ' + ip + ':' + port + '...');
