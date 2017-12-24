@@ -16,17 +16,17 @@ var express         = require('express'),
     // User            = require('./models/user');
 
 // import route handlers
-// var indexRoutes         = require('./routes/index'),
-//     campgroundRoutes    = require('./routes/campgrounds'),
-//     commentRoutes       = require('./routes/comments');
+var indexRoutes         = require('./routes/index'),
+    apiRoutes           = require('./routes/campgrounds'),
+    adminRoutes         = require('./routes/comments');
 
 // environment config
 var ip              = process.env.IP || '127.0.0.1',
     port            = parseInt(process.env.PORT, 10) || 3000,
-    dbURL           = process.env.DBURL || 'mongodb://localhost/theia',
+    dbURL           = process.env.DBURL || 'mongodb://127.0.0.1/theia',
     passportSecret  = process.env.SECRET || "Some random long string you'd never put in version control.";
 
-//mongoose.connect(dbURL, {useMongoClient: true});
+mongoose.connect(dbURL, {useMongoClient: true});
 
 // uncomment to drop and re-populate DB with test data on each run
 //var seedDB = require('./seeds');
