@@ -2,11 +2,15 @@
  * admin routes
  */
 
-// var express     = require('express'),
-//     router      = express.Router({mergeParams: true}),
+var express     = require('express'),
+    router      = express.Router({mergeParams: true});
 //     Campground  = require('../models/campground'),
 //     Comment     = require('../models/comment');
 //     middleware  = require('../middleware');
+
+router.get('/', function(req, res) {
+    res.send('admin view');
+});
 
 // // show form to create comment
 // router.get('/new', middleware.isLoggedIn, function(req, res) {
