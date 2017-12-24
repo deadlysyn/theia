@@ -1,4 +1,11 @@
-body {
-    background-color: red;
-    color: blue;
+#delete-form {
+    display: inline;
+}
+
+.jumbotron#front {
+    border: 0;
+    border-radius: 10px;
+    margin: 10vh auto;
+    padding: 2em;
+    width: 30%;
 }
