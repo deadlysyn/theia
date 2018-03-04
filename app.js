@@ -29,8 +29,8 @@ var ip              = process.env.IP || '127.0.0.1',
 mongoose.connect(dbURL, {useMongoClient: true});
 
 // uncomment to drop and re-populate DB with test data on each run
-//var seedDB = require('./seeds');
-//seedDB();
+var seedDB = require('./seedDB');
+seedDB();
 
 app.set('view engine', 'ejs');
 app.use(bp.urlencoded({extended: true}));
